@@ -3,7 +3,7 @@ public class Person {
     private String name;
     private String city;
     private String phoneNumber;
-    private Enum.Sex sex;
+    private Sex.SEX sex;
     private int age;
     private int height;
 
@@ -12,9 +12,9 @@ public class Person {
 
         this.name = arrayOfPararameters[0];
         if ("муж".equals(arrayOfPararameters[1])) {
-            this.sex = Enum.Sex.Male;
+            this.sex = Sex.SEX.Male;
         } else {
-            this.sex = Enum.Sex.Female;
+            this.sex = Sex.SEX.Female;
         }
         this.age = Integer.parseInt(arrayOfPararameters[2]);
         this.height = Integer.parseInt(arrayOfPararameters[3]);
@@ -23,7 +23,7 @@ public class Person {
     }
 
 
-    public Enum.Sex getSex() {
+    public Sex.SEX getSex() {
         return sex;
     }
 
@@ -33,7 +33,7 @@ public class Person {
 
     public String toString() {
         return "Имя: " + name +
-                "\nПол: " + Enum.getStringSex(sex) +
+                "\nПол: " + Sex.getStringSex(sex) +
                 "\nВозраст: " + age +
                 "\nРост " + height +
                 "\nНомер телефона: " + phoneNumber +
