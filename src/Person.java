@@ -3,27 +3,23 @@ public class Person {
     private String name;
     private String city;
     private String phoneNumber;
-    private Sex.SEX sex;
+    private Sex sex;
     private int age;
     private int height;
 
     public Person(String parameters) {
         String[] arrayOfPararameters = parameters.split("\\|");
 
-        this.name = arrayOfPararameters[0];
-        if ("муж".equals(arrayOfPararameters[1])) {
-            this.sex = Sex.SEX.Male;
-        } else {
-            this.sex = Sex.SEX.Female;
-        }
-        this.age = Integer.parseInt(arrayOfPararameters[2]);
-        this.height = Integer.parseInt(arrayOfPararameters[3]);
-        this.phoneNumber = arrayOfPararameters[4];
-        this.city = arrayOfPararameters[5];
+        this.name = arrayOfPararameters[Columns.NAME.getColumnNumber()];
+        this.sex=Sex.getSex(arrayOfPararameters[Columns.SEX.getColumnNumber()]);
+        this.age = Integer.parseInt(arrayOfPararameters[Columns.AGE.getColumnNumber()]);
+        this.height = Integer.parseInt(arrayOfPararameters[Columns.HEIGHT.getColumnNumber()]);
+        this.phoneNumber = arrayOfPararameters[Columns.PHONE.getColumnNumber()];
+        this.city = arrayOfPararameters[Columns.CITY.getColumnNumber()];
     }
 
 
-    public Sex.SEX getSex() {
+    public Sex getSex() {
         return sex;
     }
 
@@ -33,7 +29,7 @@ public class Person {
 
     public String toString() {
         return "Имя: " + name +
-                "\nПол: " + Sex.getStringSex(sex) +
+                "\nПол: " + sex.getValue()+
                 "\nВозраст: " + age +
                 "\nРост " + height +
                 "\nНомер телефона: " + phoneNumber +

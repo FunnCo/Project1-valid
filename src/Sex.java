@@ -1,9 +1,19 @@
-public class Sex {
-    public enum SEX {Female, Male}
+public enum Sex {
+    Female("жен"),
+    Male("муж");
 
-    public static String getStringSex(SEX sex) {
-        if (sex == SEX.Male) {
-            return "муж";
-        } else return "жен";
+    private final String sex;
+
+    Sex(String sex) {
+        this.sex=sex;
     }
+
+    public static Sex getSex(String input) {
+        return Male.sex.equals(input)?Male:Female;
+    }
+
+    public String getValue(){
+        return sex;
+    }
+
 }
