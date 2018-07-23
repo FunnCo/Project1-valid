@@ -18,6 +18,9 @@ public class Person {
         this.city = arrayOfPararameters[Columns.CITY.getColumnNumber()];
     }
 
+    public String getName() {
+        return name;
+    }
 
     public Sex getSex() {
         return sex;
