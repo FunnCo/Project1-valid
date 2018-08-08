@@ -1,3 +1,6 @@
+import entities.Person;
+import enums.Columns;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

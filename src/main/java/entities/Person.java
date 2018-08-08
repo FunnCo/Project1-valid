@@ -1,3 +1,8 @@
+package entities;
+
+import enums.Columns;
+import enums.Sex;
+
 public class Person {
 
     private String name;

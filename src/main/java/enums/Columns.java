@@ -1,3 +1,5 @@
+package enums;
+
 public enum Columns {
     NAME(0),
     SEX(1),
@@ -8,7 +10,7 @@ public enum Columns {
 
     private final int columnNumber;
 
-    private Columns(int columnNumber) {
+    Columns(int columnNumber) {
         this.columnNumber = columnNumber;
     }
 

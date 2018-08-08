@@ -1,3 +1,5 @@
+package enums;
+
 public enum Sex {
     Female("жен"),
     Male("муж");
