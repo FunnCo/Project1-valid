@@ -4,6 +4,7 @@ import enums.Columns;
 import enums.Sex;
 
 public class Person {
+    private String parameters;
 
     private String name;
     private String city;
@@ -13,6 +14,8 @@ public class Person {
     private int height;
 
     public Person(String parameters) {
+        this.parameters = parameters;
+
         String[] arrayOfPararameters = parameters.split("\\|");
 
         this.name = arrayOfPararameters[Columns.NAME.getColumnNumber()];
@@ -21,6 +24,9 @@ public class Person {
         this.height = Integer.parseInt(arrayOfPararameters[Columns.HEIGHT.getColumnNumber()]);
         this.phoneNumber = arrayOfPararameters[Columns.PHONE.getColumnNumber()];
         this.city = arrayOfPararameters[Columns.CITY.getColumnNumber()];
+    }
+    public String getParameters(){
+        return parameters;
     }
 
     public String getName() {
@@ -33,6 +39,10 @@ public class Person {
 
     public int getAge() {
         return age;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public String toString() {
