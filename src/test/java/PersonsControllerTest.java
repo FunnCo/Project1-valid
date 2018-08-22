@@ -3,10 +3,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +18,7 @@ public class PersonsControllerTest {
     @Before
     public void prepare() throws IOException, InterruptedException {
         personsController = new PersonsController();
-        personsController.readPersonsFromFile("D:\\Project1-valid\\example.csv");
+        personsController.readPersonsFromFile("E:\\Project1-valid\\example.csv");
     }
 
     @Test
@@ -90,12 +92,24 @@ public class PersonsControllerTest {
     @Test
     public void writeInCSVTest() throws IOException, InterruptedException {
         personsController.writeInCSV(personsController.getPersons());
-        PersonsController testController = new PersonsController();
-        testController.readPersonsFromFile("D:\\Project1-valid\\example_output.csv");
-        assertEquals(personsController.getPersons(), testController.getPersons());
+        Scanner scannerFromActual = new Scanner(new FileInputStream("E:\\Project1-valid\\example_output.csv"),"cp1251");
 
-        // Описарние проблемы
-        // Короче, при считывании, он почему-то добавляет в конце пробел. Даже если он будет считывать с исходного файла, он все равно добавит пробел, и тест провалится.
-        // Почему? Не знаю. Но факт.
+        String lineFromActualFile = "";
+        while (scannerFromActual.hasNext()){
+            lineFromActualFile = lineFromActualFile + scannerFromActual.nextLine();
+        }
+        byte[] actual = lineFromActualFile.getBytes();
+
+        Scanner scannerFromExpected = new Scanner(new FileInputStream("E:\\Project1-valid\\example.csv"),"cp1251");
+        String lineFromExpectedFile = "";
+        while (scannerFromExpected.hasNext()){
+            lineFromExpectedFile = lineFromExpectedFile + scannerFromExpected.nextLine();
+        }
+        byte[] expected = lineFromExpectedFile.getBytes();
+
+        scannerFromActual.close();
+        scannerFromExpected.close();
+
+        assertArrayEquals(expected, actual);
     }
 }

@@ -67,7 +67,7 @@ public class PersonsController {
     }
 
     public void writeInCSV(ArrayList<Person> persons) throws IOException {
-        PrintWriter fileWriter = new PrintWriter("D:\\Project1-valid\\example_output.csv","cp1251");
+        PrintWriter fileWriter = new PrintWriter("E:\\Project1-valid\\example_output.csv","cp1251");
         for (Person person : persons){
             fileWriter.write(person.getParameters() + "\n");
         }
